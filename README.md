@@ -1,25 +1,45 @@
-# Slate+Simple Jekyll Theme
+# jekyll-uno
 
-Slate+Simple is a sleek and minimalistic theme for Jekyll blogs. It is based on the [Clean+Simple Theme](https://github.com/nathanrooy/Clean-and-Simple-Jekyll-Theme) by [Nathan Rooy](https://nathanrooy.github.io). 
+Jekyll-Uno - a minimal, responsive theme for Jekyll based on the [Uno](https://github.com/daleanthony/Uno) theme for Ghost.
 
-[Live demo.](https://benradford.github.io)
+> :warning:
+  This theme requires ruby and rubygems installed
 
-Slate+Simple is a light-on-dark theme that features crisp typography and includes featured images for posts. It is easily modified and provided under the MIT open source license to encourage community modifications and improvements. 
+### Features
 
-<figure>
-<img src="slate+simple_screenshot.png">
-</figure>
+* Clean layout
+* Resposive layout
+* Pagination
+* Syntax highlighting
+* Social links
+* Tags listing page
+* Categories listing page
+* Google Analytics integration
+* Disqus integration
 
-YAML headers include support for:
+---
 
-* title
-* subtitle
-* author
-* featured-image
-* date-string
-* categories
-* tags
+### Install and Test
 
-Additionally, Slate+Simple supports [MathJax](https://www.mathjax.org) for beautiful equations and [Font Awesome](http://fontawesome.io/icons/). LaTeX math wrapped in `$$` will automatically compile to in-line or block images of formatted equations. Font awesome icons are included with the `i` tag. For example: `<i class='fa fa-github-alt'></i>`.
+1. Download or clone repo `git clone git@github.com:joshgerdes/jekyll-uno.git`
+2. Enter the folder: `cd jekyll-uno/`
+3. If you don't have bundler installed: `gem install bundler`
+3. Install Ruby gems: `bundle install`
+4. Start Jekyll server: `bundle exec jekyll serve --watch`
 
+Access via: [http://localhost:4000/jekyll-uno/](http://localhost:4000/jekyll-uno/)
 
+---
+
+### Demo and Download
+
+[Demo](http://joshgerdes.com/jekyll-uno/)
+[Download](https://github.com/joshgerdes/jekyll-uno/archive/master.zip)
+
+![jekyll-uno - free Jekyll theme](/screenshot.png)
+
+---
+
+### Copyright and license
+
+It is under [the MIT license](/LICENSE).
