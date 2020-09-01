@@ -1,20 +1,47 @@
----
-layout: default
----
-<article class="post-container post-container--single">
-  <header class="post-header">
-    <div class="post-meta">
-      <time datetime="{{ page.date | date: "%Y-%m-%d %H:%M" }}" class="post-meta__date date">{{ page.date | date: "%-d %b %Y" }}</time>
-      {% if page.tags.size > 0 %}
-      &#8226; <span class="post-meta__tags">on {% for tag in page.tags %}<a href="{{ site.baseurl }}/tags/#{{ tag }}">{{ tag }}</a>{% if forloop.last == false %}, {% endif %}{% endfor %}</span>
-      {% endif %}
-    </div>
-    <h1 class="post-title">{{ page.title }}</h1>
-  </header>
+<!DOCTYPE html>
+<html>
+  {% include head.html %}
 
-  <section class="post">
-    {{ content }}
-  </section>
-  {% if page.comments != false and site.disqus_shortname %}<section id="disqus_thread"></section><!-- /#disqus_thread -->{% endif %}
-</article>
-{% if page.comments != false %}{% include disqus.html %}{% endif %}
+  <body>
+    {% include header.html %}
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+          <header class="post-header">
+
+            {% if page.draft %}
+              {% include draft-banner.html %}
+            {% endif %}
+
+            <h1 class="post-title">
+            {% if page.headline_formatted_title %}
+              {{ page.headline_formatted_title | newline_to_br }}
+            {% else %}
+              {{ page.title }}
+            {% endif %}
+            </h1>
+
+            {% if page.subtitle %}<h1 class="post-subtitle">{{ page.subtitle }}</h1>{% endif %}
+            <p class="post-meta"><span class="post-date">{{ page.date | date: "%B %-d, %Y" }}
+            </span>{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
+          </header>
+
+          <article class="post-content">
+            {{ content }}
+          </article>
+
+          {% if page.draft %}
+              {% include draft-banner.html %}
+          {% endif %}
+
+      </div>
+      </div>
+    </div>
+
+    {% include footer.html %}
+
+    {% include foot.html %}
+  </body>
+</html>

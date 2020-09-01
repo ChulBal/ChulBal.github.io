@@ -1,17 +1,64 @@
-<footer class="footer">
-  <span class="footer__copyright">&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}. All rights reserved.</span>
+<footer class="site-footer">
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1 social-links">
+        <h4>CONTACT</h4>
+
+        {% for contact in site.footer.contact %}
+
+          {% assign contact_icon_path = "/assets/img/icons/" | append: contact.name | downcase | append: ".png" | absolute_url %}
+          <img
+            src="{{ contact_icon_path }}"
+            alt="{{ contact.name | downcase }}"
+          />
+          <a href="{{ contact.link }}" id="{{ contact.name | downcase }}-link">
+            {% if contact.value and contact.value != "" and contact.value != nil %}
+              {{ contact.value }}
+            {% else %}
+              {{ contact.name }}
+            {% endif %}
+          </a>
+          <br />
+
+        {% endfor %}
+      </div>
+
+      <div class="footer-col footer-col-2 social-links">
+        <h4>FOLLOW</h4>
+
+        {% for follow in site.footer.follow %}
+          <span class="wrap-link">
+
+            {% assign follow_icon_path = "/assets/img/icons/" | append: follow.name | downcase | append: ".png" | absolute_url %}
+            <img
+              src="{{ follow_icon_path }}"
+              alt="{{ follow.name | downcase }}"
+            />
+            <a href="{{ follow.link }}">
+              {% if follow.value and follow.value != "" and follow.value != nil %}
+                {{ follow.value }}
+              {% else %}
+                {{ follow.name }}
+              {% endif %}
+            </a>
+          </span>
+
+          {% assign mod = forloop.index | modulo: 2 %} {% if mod == 0 %}
+            <br />
+          {% endif %}
+
+        {% endfor %}
+      </div>
+
+      {% if site.footer.show_powered_by == true %}
+        <div class="footer-col footer-col-3 powered-by">
+          <p>
+            powered by <a href="https://github.com/eliottvincent/bay">Bay</a> | {{ 'now' | date: "%Y" }}
+          </p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
 </footer>
 
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="{{ site.baseurl }}/js/main.js?{{site.time | date: '%s%N'}}"></script>
-{% if site.google_analytics and jekyll.environment != "development" %}
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', '{{ site.google_analytics }}', 'auto');
-  ga('send', 'pageview');
-</script>
-{% endif %}
+{% include wechat-widget.html %}
